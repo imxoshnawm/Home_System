@@ -572,6 +572,166 @@
                 height: 120px;
             }
         }
+        /* Add this to your existing CSS file */
+
+/* Desktop styles (apply by default) */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.showcase {
+    height: 500px;
+    padding-top: 120px;
+}
+
+.showcase h1 {
+    font-size: 3.5rem;
+}
+
+.showcase p {
+    font-size: 1.4rem;
+    max-width: 70%;
+}
+
+.feature-content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.feature-text {
+    flex: 1;
+    order: 2;
+}
+
+.feature-image {
+    flex: 1;
+    order: 1;
+}
+
+/* Change the feature order for even cards */
+.feature-card:nth-child(even) .feature-text {
+    order: 1;
+}
+
+.feature-card:nth-child(even) .feature-image {
+    order: 2;
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    height: 200px;
+}
+
+.project-diagrams {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.diagram-box {
+    flex: 1;
+}
+
+/* Then modify your existing mobile media query to override these styles */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+    
+    .showcase {
+        height: 350px;
+        padding-top: 80px;
+    }
+    
+    .showcase h1 {
+        font-size: 2.5rem;
+    }
+    
+    .showcase p {
+        font-size: 1.2rem;
+        max-width: 100%;
+    }
+    
+    .feature-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .feature-text {
+        order: 2;
+    }
+    
+    .feature-image {
+        order: 1;
+    }
+    
+    /* Reset the order for mobile on all cards */
+    .feature-card:nth-child(even) .feature-text {
+        order: 2;
+    }
+    
+    .feature-card:nth-child(even) .feature-image {
+        order: 1;
+    }
+    
+    .team-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .gallery-item {
+        height: 120px;
+    }
+    
+    .project-diagrams {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+}
+
+/* Add an additional breakpoint for tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        width: 85%;
+    }
+    
+    .showcase {
+        height: 400px;
+        padding-top: 100px;
+    }
+    
+    .showcase h1 {
+        font-size: 3rem;
+    }
+    
+    .team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
     </style>
 </head>
 <body>
