@@ -6,35 +6,7 @@
     <title>Smart Home System Project</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
-        /* Your existing CSS remains the same */
-        /* چاککردنی تایبەت بۆ مۆبایل */
-@media (max-width: 480px) {
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .logo {
-        margin-bottom: 15px;
-    }
-    
-    .team-member img {
-        height: 200px;
-    }
-    
-    .feature-text p {
-        font-size: 14px;
-    }
-    
-    .diagram-box {
-        padding: 10px;
-    }
-    
-    pre {
-        font-size: 10px;
-        overflow-x: auto;
-    }
-}
+        /* Your existing CSS with mobile optimizations */
         :root {
             --primary-color: #5C6BC0;       /* Indigo-like blue - modern tech feel */
             --secondary-color: #3949AB;     /* Slightly darker shade for contrast */
@@ -56,10 +28,11 @@
             line-height: 1.6;
             background-color: #F5F7FA;      /* Subtle light background */
             color: #455A64;                 /* Softer dark color for text */
+            overflow-x: hidden;             /* Prevent horizontal scrolling */
         }
         
         .container {
-            width: 85%;
+            width: 90%;                     /* Increased from 85% for mobile */
             margin: auto;
             overflow: hidden;
         }
@@ -82,7 +55,7 @@
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;              /* Reduced for mobile */
             font-weight: bold;
             color: #FFFFFF;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -96,35 +69,36 @@
         
         /* Showcase */
         .showcase {
-            height: 450px;
+            height: 350px;                  /* Reduced height for mobile */
             position: relative;
             color: #fff;
             text-align: center;
-            padding-top: 140px;
+            padding-top: 80px;              /* Reduced padding for mobile */
         }
         
         .showcase h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;              /* Reduced font size for mobile */
             margin-bottom: 0.5rem;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .showcase p {
-            font-size: 1.5rem;
-            max-width: 700px;
+            font-size: 1.2rem;              /* Reduced font size for mobile */
+            max-width: 100%;                /* Full width on mobile */
             margin: auto;
             margin-bottom: 2rem;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            padding: 0 15px;                /* Added padding for text */
         }
         
         /* Main content */
         .main-content {
-            padding: 3rem 0;
+            padding: 2rem 0;                /* Reduced padding for mobile */
             background-color: white;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border-radius: var(--border-radius);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;          /* Reduced margin for mobile */
             transition: all 0.3s ease;
         }
         
@@ -133,8 +107,8 @@
         }
         
         .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;              /* Reduced font size for mobile */
+            margin-bottom: 1.2rem;          /* Reduced margin for mobile */
             text-align: center;
             color: var(--secondary-color);
             padding-bottom: 0.5rem;
@@ -147,46 +121,46 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            height: 4px;
-            width: 80px;
+            height: 3px;                    /* Slightly smaller for mobile */
+            width: 60px;                    /* Reduced width for mobile */
             background: var(--accent-color);
             transition: width 0.3s ease;
         }
         
         .section-title:hover::after {
-            width: 120px;
+            width: 90px;                    /* Reduced hover width for mobile */
         }
         
         .project-intro {
-            padding: 2rem;
-            line-height: 1.8;
+            padding: 1.5rem;                /* Reduced padding for mobile */
+            line-height: 1.7;
         }
         
         /* Features */
         .features {
-            padding: 2rem;
+            padding: 1rem;                  /* Reduced padding for mobile */
         }
         
         .feature-card {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;          /* Reduced margin for mobile */
             overflow: hidden;
-            padding: 1.5rem;
+            padding: 1.2rem;                /* Reduced padding for mobile */
             border-left: 4px solid var(--accent-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .feature-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);    /* Reduced movement for mobile */
             box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
         
         .feature-header {
             color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;              /* Reduced font size for mobile */
+            margin-bottom: 0.8rem;          /* Reduced margin for mobile */
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 0.5rem;
             transition: color 0.3s ease;
@@ -197,14 +171,15 @@
         }
         
         .feature-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            display: flex;                  /* Changed to flex for mobile */
+            flex-direction: column;         /* Stack vertically on mobile */
+            gap: 1.5rem;                    /* Reduced gap for mobile */
             margin-top: 1rem;
         }
         
         .feature-text {
-            line-height: 1.7;
+            line-height: 1.6;
+            order: 2;                       /* Text below image on mobile */
         }
         
         .feature-image {
@@ -212,6 +187,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            order: 1;                       /* Image above text on mobile */
         }
         
         .feature-image img {
@@ -223,32 +199,33 @@
         }
         
         .feature-image:hover img {
-            transform: scale(1.05);
+            transform: scale(1.02);         /* Reduced scale for mobile */
         }
         
         .project-diagrams {
-            margin-top: 1.5rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            margin-top: 1.2rem;             /* Reduced margin for mobile */
+            display: flex;                  /* Changed to flex for mobile */
+            flex-direction: column;         /* Stack vertically on mobile */
+            gap: 1.2rem;                    /* Reduced gap for mobile */
         }
         
         .diagram-box {
             border: 1px solid #E0E0E0;
             border-radius: var(--border-radius);
-            padding: 1rem;
+            padding: 0.8rem;                /* Reduced padding for mobile */
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
         
         .diagram-box:hover {
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
+            transform: translateY(-3px);    /* Reduced movement for mobile */
         }
         
         .diagram-box h4 {
             margin-bottom: 0.5rem;
             color: var(--secondary-color);
             transition: color 0.3s ease;
+            font-size: 1.1rem;              /* Reduced font size for mobile */
         }
         
         .diagram-box:hover h4 {
@@ -263,14 +240,15 @@
         }
         
         .diagram-box:hover img {
-            transform: scale(1.02);
+            transform: scale(1.01);         /* Reduced scale for mobile */
         }
         
+        /* Code accordion styles */
         .accordion {
             background-color: #EEF2F7;
             color: var(--dark-color);
             cursor: pointer;
-            padding: 18px;
+            padding: 15px;                  /* Reduced padding for mobile */
             width: 100%;
             text-align: left;
             border: none;
@@ -281,6 +259,7 @@
             font-weight: bold;
             position: relative;
             overflow: hidden;
+            font-size: 0.95rem;             /* Reduced font size for mobile */
         }
         
         .accordion:after {
@@ -302,7 +281,7 @@
         }
         
         .panel {
-            padding: 0 18px;
+            padding: 0 15px;                /* Reduced padding for mobile */
             background-color: white;
             max-height: 0;
             overflow: hidden;
@@ -311,16 +290,23 @@
             border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
         
+        .panel pre {
+            font-size: 0.8rem;              /* Smaller code font for mobile */
+            overflow-x: auto;               /* Allow horizontal scrolling for code */
+            white-space: pre-wrap;          /* Allow code wrapping */
+            word-break: break-word;         /* Break words if needed */
+        }
+        
         /* Gallery */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            padding: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Smaller column size for mobile */
+            gap: 0.8rem;                    /* Reduced gap for mobile */
+            padding: 1.2rem;                /* Reduced padding for mobile */
         }
         
         .gallery-item {
-            height: 200px;
+            height: 150px;                  /* Reduced height for mobile */
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -352,19 +338,19 @@
         }
         
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         /* Team */
         .team {
-            padding: 2rem;
+            padding: 1.5rem;                /* Reduced padding for mobile */
         }
         
         .team-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr;     /* Single column for mobile */
+            gap: 1.5rem;                    /* Reduced gap for mobile */
+            margin-top: 1.5rem;             /* Reduced margin for mobile */
         }
         
         .team-member {
@@ -377,23 +363,23 @@
         }
         
         .team-member:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);    /* Reduced movement for mobile */
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
         .team-member img {
             width: 100%;
-            height: 500px;
+            height: 300px;                  /* Reduced height for mobile */
             object-fit: cover;
             transition: transform 0.5s ease;
         }
         
         .team-member:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);         /* Reduced scale for mobile */
         }
         
         .team-member-info {
-            padding: 1.5rem;
+            padding: 1.2rem;                /* Reduced padding for mobile */
             position: relative;
         }
         
@@ -410,13 +396,14 @@
         }
         
         .team-member:hover .team-member-info::before {
-            width: 50%;
+            width: 40%;                     /* Reduced width for mobile */
         }
         
         .team-member-info h3 {
-            margin-bottom: 0.5\\rem;
+            margin-bottom: 0.5rem;
             color: var(--secondary-color);
             transition: color 0.3s ease;
+            font-size: 1.3rem;              /* Reduced font size for mobile */
         }
         
         .team-member:hover .team-member-info h3 {
@@ -425,6 +412,25 @@
         
         .team-member-info p {
             color: #78909C;
+            font-size: 0.9rem;              /* Reduced font size for mobile */
+        }
+        
+        /* Supervision section */
+        .project-supervision {
+            padding: 1.5rem;                /* Reduced padding for mobile */
+        }
+        
+        .supervisor-container {
+            margin-bottom: 1.5rem !important; /* Reduced margin for mobile */
+        }
+        
+        .conclusion-text {
+            font-size: 0.95rem;             /* Smaller text for mobile */
+            line-height: 1.6;
+        }
+        
+        .conclusion-text p {
+            margin-bottom: 1rem;
         }
         
         /* Footer */
@@ -432,8 +438,8 @@
             background: var(--dark-color);
             color: white;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            padding: 1.5rem 0;              /* Reduced padding for mobile */
+            margin-top: 2rem;               /* Reduced margin for mobile */
             position: relative;
             overflow: hidden;
         }
@@ -449,9 +455,10 @@
         }
         
         footer p {
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;          /* Reduced margin for mobile */
             position: relative;
             z-index: 1;
+            font-size: 0.9rem;              /* Reduced font size for mobile */
         }
         
         /* Animations */
@@ -535,23 +542,34 @@
             }
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .feature-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .project-diagrams {
-                grid-template-columns: 1fr;
-            }
-            
-            .showcase {
-                height: 400px;
-                padding-top: 100px;
-            }
-            
+        /* Additional Mobile-Specific Styles */
+        @media (max-width: 600px) {
             .showcase h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+            
+            .showcase p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .feature-header {
+                font-size: 1.3rem;
+            }
+            
+            .team-member img {
+                height: 250px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-item {
+                height: 120px;
             }
         }
     </style>
@@ -586,12 +604,12 @@
             <div class="feature-card animate__animated animate__fadeInUp">
                 <h3 class="feature-header">NFC Door Control</h3>
                 <div class="feature-content">
+                    <div class="feature-image">
+                        <img src="media.png" alt="NFC Card and Reader">
+                    </div>
                     <div class="feature-text">
                         <p>You can open the house door using NFC tags, enhancing both security and convenience. Using an NFC card, you can access the details of our project and its accompanying materials.</p>
                         <p>Of course, you could also get further access points and resources to the details and materials used.</p>
-                    </div>
-                    <div class="feature-image">
-                        <img src="media.png" alt="NFC Card and Reader">
                     </div>
                 </div>
                 <div class="project-diagrams">
@@ -850,11 +868,11 @@
             <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                 <h3 class="feature-header">Control of Balcony Lighting</h3>
                 <div class="feature-content">
-                    <div class="feature-text">
-                        <p>Controlling the light on the balcony with contact light, automatically turns off when the light is exposed and turns on in the dark.</p>
-                    </div>
                     <div class="feature-image">
                         <img src="maxresdefault.jpg" alt="LDR sensor and LED">
+                    </div>
+                    <div class="feature-text">
+                        <p>Controlling the light on the balcony with contact light, automatically turns off when the light is exposed and turns on in the dark.</p>
                     </div>
                 </div>
                 <div class="project-diagrams">
