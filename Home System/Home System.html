@@ -891,33 +891,56 @@
                             <pre>
 #include <Servo.h>
 
-Servo myservo;
-int rainSensorPin = 2;  // Water sensor signal pin
-int servoPin = 9;       // Servo control pin
-bool waterDetected = false;  // Track water detection state
+
+Servo servo;
+
+const int waterSensorPin = 12;  // Water sensor signal pin
+
+const int servoPin = 10;        // Servo control pin
+
+bool waterDetected = false;     // Track water detection state
+
 
 void setup() {
-  Serial.begin(9600);        // Initialize serial monitor for debugging
-  
-  pinMode(rainSensorPin, INPUT);  // Set sensor pin as input
-  
-  myservo.attach(servoPin);  // Attach servo to pin
-  myservo.write(0);         // Initialize at 0 degrees
+
+  pinMode(waterSensorPin, INPUT);  // Set sensor pin as input
+
+  servo.attach(servoPin);          // Attach servo to pin
+
+  servo.write(0);                  // Start at 0 degrees
+
+  Serial.begin(9600);              // Initialize serial monitor for debugging
+
 }
 
+
 void loop() {
-  waterDetected = digitalRead(rainSensorPin);  // Read sensor state
+
+  waterDetected = digitalRead(waterSensorPin);  // Read sensor state
+
   
-  if (waterDetected) {
+
+  if (waterDetected == HIGH) {         // Water detecACted
+
+    servo.write(90);                   // Move servo to 90 degrees
+
     Serial.println("Water detected! Servo at 90 degrees.");
-    myservo.write(90);  // Open roof to 90 degrees
-  } else {
+
+  } else  {                             // No water detected
+
+    servo.write(0);                    // Return servo to 0 degrees
+
     Serial.println("No water detected. Servo at 0 degrees.");
-    myservo.write(0);   // Return to 0 degrees
+
   }
-  
-  delay(1000);  // Short delay to keep loop running smoothly
+
+
+
+  delay(100);  // Short delay to keep the loop running smoothly
+
 }
+
+
                             </pre>
                         </div>
                     </div>
@@ -945,30 +968,49 @@ void loop() {
                         <button class="accordion">View Code</button>
                         <div class="panel">
                             <pre>
-int soundSensor = 2; // Connect sound sensor to digital pin 2
-int LED = 13; // Onboard LED
-int soundState = 0;
+int sensor = 2; // Connected to digital output of KY-038 sound sensor module
+
+int led = 13; // Connected to postive of led
+
+boolean is_on = false; //To determine/track if led is on or off
+
 
 void setup() {
-  pinMode(soundSensor, INPUT); // Setting the sound sensor as input
-  pinMode(LED, OUTPUT); // Setting the pin 13 as output for turning on/off LED
-  Serial.begin(9600);
+
+  pinMode(sensor, INPUT); //Setting the pin to input for reading data
+
+  pinMode(led, OUTPUT); //Setting the pin to output for turning the led on/off
+
+
 }
 
+
 void loop() {
-  soundState = digitalRead(soundSensor); // Reading the sound sensor status
-  
-  if (soundState == 1) { // If the sound sensor detects sound
-    if (digitalRead(LED) == LOW) {
-      digitalWrite(LED, HIGH); // Turn on LED
-      Serial.println("LED On");
-    } 
-    else {
-      digitalWrite(LED, LOW); // Turn off LED
-      Serial.println("LED Off");
+
+
+  int data = digitalRead(sensor); //Reading data from sensor and storing in variable
+
+
+  if (data == 1) { // 1 is sent from sensor when loud noise is detected
+
+    if (is_on == true) { // If led is on then turn it off
+
+      digitalWrite(led, LOW);
+
+      is_on = false;
+
     }
-    delay(500); // To avoid multiple triggers from one clap
+
+    else { // else if led is off then turn it on
+
+      digitalWrite(led, HIGH);
+
+      is_on = true;
+
+    }
+
   }
+
 }
                             </pre>
                         </div>
